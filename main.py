@@ -53,13 +53,8 @@ while 1:
         # print repr(event)
         if event.type == "EV_KEY" and event.value == 1:
             if event.code.startswith("KEY"):
-                if event.code == "KEY_ENTER":
-                    filename = getcwd() + '/sounds/' + sounds["enter"]
-                elif event.code == "KEY_SPACE":
-                    filename = getcwd() + '/sounds/' + sounds["space"]
-                else:
-                    if event.code not in key_sound_pair:
-                        key_sound_pair[event.code] = choice(sounds["click"])
-                    filename = getcwd() + '/sounds/' +\
-                        key_sound_pair[event.code]
+                if event.code not in key_sound_pair:
+                    key_sound_pair[event.code] = choice(sounds["click"])
+                filename = getcwd() + '/sounds/' +\
+                    key_sound_pair[event.code]
                 PlaySound(filename, volume).start()
